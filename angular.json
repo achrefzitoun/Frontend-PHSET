@@ -27,7 +27,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/Front/css/nucleo-icons.css",
+              "src/assets/Front/css/nucleo-svg.css",
+              "src/assets/Front/css/soft-design-system.css"
             ],
             "scripts": []
           },
