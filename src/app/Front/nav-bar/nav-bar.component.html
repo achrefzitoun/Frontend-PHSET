@@ -76,9 +76,13 @@
         </div>
         Account
       </div>
-      <a href="./pages/sign-in.html" class="dropdown-item border-radius-md">
-        <span class="ps-3">Sign In</span>
-      </a>
+      <!-- <a href="./pages/sign-in.html" class="dropdown-item border-radius-md"> -->
+        <!-- <span class="ps-3" click="navigateToSignIn()">Sign In</span> -->
+       
+          <span class="ps-3"(click)="navigateToSignIn()">Sign In</span>
+          <span class="ps-3" (click)="logout()">Logout</span>
+       
+      <!-- </a> -->
     </div>
     
     <div class="d-lg-none">
