@@ -1,0 +1,91 @@
+<app-nav-bar-back></app-nav-bar-back>
+<style>
+    .pagination > .page-item > .page-link.custom-button-color {
+    background-color: red;
+    border-color: red;
+    color: #fff;
+}
+
+
+</style>
+<div class="container-scroller">
+
+    <app-nav-vertical></app-nav-vertical>
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title">Event Details</h3>
+
+            </div>
+            
+                <div class="col-lg-11 grid-margin stretch-card">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            
+                            <p class="card-description"> <code>List Event</code>
+                            </p>
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-primary mt-2 mt-sm-0 btn-icon-text"
+                                    routerLink="/addev">
+                                    <i class="mdi mdi-plus-circle"></i> Add Event
+                                </button>
+                            </div>
+
+                            <br>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Type</th>
+                                            <th>Start_Date</th>
+                                            <th>Clousing_Date</th>
+                                            <th>Description</th>
+                                            <th>Mode</th>
+                                            <th>Payment</th>
+                                            <th>Nbr_Part</th>
+                                            <th>Price</th>
+                                            <th>Room</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngFor="let e of listEvent  | paginate: { itemsPerPage: 3, currentPage: p }">
+                                            <tr>
+
+                                                <td>{{e.titleEvent}}</td>
+                                                <td>{{e.typeEvent}}</td>
+                                                <td>{{e.dateS | date: 'dd/MM/yyyy HH:mm'}}</td>
+                                                <td>{{e.dateF | date: 'dd/MM/yyyy HH:mm'}}</td>
+                                                <td>{{e.descriptionEvent}}</td>
+                                                <td>{{e.modeEvent}}</td>
+                                                <td>{{e.modePay}}</td>
+                                                <td>{{e.nbPartEvent}}</td>
+                                                <td>{{e.priceEvent}}</td>
+                                                <td>{{e.room?.nameRoom}}</td>
+                                                <td><a [routerLink]="['/Editev',e.idEvent]" style="color: #990100;">
+                                                        Edit</a></td>
+                                                <td> <a [routerLink]="['/pdf',e.idEvent]" style="color: #990100;">
+                                                    Plannig</a></td>        
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 py-5 d-flex justify-content-center align-items-center">
+                    <div class="text-center">
+                        <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+                    </div>
+                </div>
+                
+        </div>
+        
+    </div>
+ </div>   

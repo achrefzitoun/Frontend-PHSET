@@ -1,0 +1,70 @@
+<app-navbar-event></app-navbar-event>
+
+
+<!-- -------- START HEADER 8 w/ card over right bg image ------- -->
+<header>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="page-header min-vh-85">
+        <div *ngIf="message" class="toast fade show p-2 mx-auto mt-7" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="toast-body text-center">
+                {{ message }}
+                <hr class="horizontal dark">
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn bg-gradient-secondary btn-sm mb-0"
+                        data-bs-dismiss="toast">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <img class="position-absolute fixed-top ms-auto w-50 h-88 z-index-0 d-none d-sm-none d-md-block border-radius-section border-top-end-radius-5 border-top-start-radius-5 border-bottom-end-radius-5 mt-8"
+                src="../../assets/Front/img/curved-images/app001.jpg" alt="image">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 d-flex justify-content-center flex-column">
+                    <div class="card d-flex blur justify-content-center p-4 shadow-lg my-sm-0 my-sm-6 mt-8 mb-5">
+
+                        <div class="text-center">
+                            <h3 class="text-gradient text-primary">Uplaod your video</h3>
+                            <p class="mb-0">
+                                For further questions, including partnership opportunities, please email
+                                hello@creative-tim.com
+                                or contact using our contact form.
+                            </p>
+                        </div>
+                        <form id="contact-form" method="post" autocomplete="off">
+                            <div class="card-body pb-2">
+                                <div class="form-group mb-0 mt-md-0 mt-4">
+                                    <label>Write your description</label>
+                                    <textarea name="message" class="form-control" id="message" rows="6"
+                                        placeholder="Describe your project"
+                                        [(ngModel)]="postvid.descriptionPostVid"></textarea>
+                                </div>
+
+                                <div class="form-group mb-0 mt-md-0 mt-4">
+                                    <label>Select your file</label>
+                                    <input type="file" class="form-control" id="inputGroupFile02"
+                                        (change)="onFileSelected($event)">
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-md-12 text-center">
+                                        <button type="submit" class="btn bg-gradient-primary mt-3 mb-0"
+                                            (click)="add()">Send Message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>   

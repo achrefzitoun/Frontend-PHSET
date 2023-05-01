@@ -1,0 +1,56 @@
+<app-nav-bar-back></app-nav-bar-back>
+
+
+<div class="container-scroller">
+
+    <app-nav-vertical></app-nav-vertical>
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title">Edit Event</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a (click)="confirmDelete()" style="color: red">Delete</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page"> Edit </li>
+                    </ol>
+                </nav>
+            </div>
+            <form #f="ngForm">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-9 mx-auto">
+                            <div class="card ">
+                                <div class="card-body ">
+                                    <h4 class="card-title">Edit Thematic</h4>
+                                    <p class="card-description">...</p>
+
+                                    <form class="forms-sample">
+                                        <div class="form-group">
+                                            <label>Title </label>
+                                            <input type="text" class="form-control" name="title" placeholder="Title"
+                                                [(ngModel)]="t.titleThem" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Description</label>
+                                            <textarea class="form-control" name="description" id="exampleInputName1"
+                                                placeholder="Description" [(ngModel)]="t.descriptionThem"
+                                                value="description"></textarea>
+                                        </div>
+
+
+                                        <button type="submit" class="btn btn-primary mr-2" (click)="editThematic()"> Submit </button>
+                                        <button class="btn btn-light" routerLink='/app0det'>Cancel</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

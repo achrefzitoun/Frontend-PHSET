@@ -1,0 +1,124 @@
+<app-nav-bar-back></app-nav-bar-back>
+
+
+<div class="container-scroller">
+    <app-nav-vertical></app-nav-vertical>
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title">Speakers Details</h3>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card-body">
+
+                        <div class="row">
+
+                            <div class="col-md-6 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p class="card-description"> <code>List Speakers</code>
+                                        </p>
+                                        <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Biography</th>
+                                                    <th>Email</th>
+                                                    <th>Tel Number</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <ng-container *ngFor="let s of speaker" >
+                                                <tr>
+                                                    <td>{{s.nameSpeaker}}</td>
+                                                    <td>{{s.biography}} </td>
+                                                    <td>{{s.emailSpeaker}}</td>
+                                                    <td>{{s.numTelSpeaker}}</td>
+                                                    <td> <a [routerLink]="['/editSp',s.idSpeaker]" style="color: #990100;">Edit</a></td>
+                                                </tr>
+                                                </ng-container>
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p class="card-description"> <code>Add Speaker</code>
+                                        </p>
+                                       
+                                        <form class="forms-sample" #f="ngForm">
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" class="form-control" placeholder="Name" name="name"
+                                                [(ngModel)]="s.nameSpeaker" />
+                                              </div>
+                                            <div class="form-group">
+                                                <label>Biography</label>
+                                                <textarea class="form-control" placeholder="Biography" name="desc"
+                                                [(ngModel)]="s.biography" ></textarea>
+                                              </div>
+                                              <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" placeholder="Email" name="title"
+                                                [(ngModel)]="s.emailSpeaker"/>
+                                              </div>
+                                              <div class="form-group">
+                                                <label>Tel Number</label>
+                                                <input type="text" class="form-control" placeholder="Tel Number" name="title"
+                                                [(ngModel)]="s.numTelSpeaker" />
+                                              </div>
+                                            <button type="submit" class="btn btn-primary mr-2" (click)="addSpeaker()"> Submit </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">EVENTS / SPEAKERS</h4>
+                            <p class="card-description"><code>List Of Confirmed Speakers</code>
+                            </p>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Event Title</th>
+                                            <th>Speaker name</th>
+                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngFor="let e of event" >
+                                            <tr *ngIf="e.speakersconf.length !== 0">
+       
+                                            <td>{{e.titleEvent}}</td>
+                                            <ng-container *ngFor="let s of e.speakersconf" >
+                                            <td>{{s.nameSpeaker}}</td>
+                                        </ng-container>
+                                        
+                                        </tr>
+                                    
+                                </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          
+            </div>
+        </div>
+    </div>
+</div>

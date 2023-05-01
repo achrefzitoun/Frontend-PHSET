@@ -1,0 +1,58 @@
+<app-navbar-event></app-navbar-event>
+
+<section class="py-lg-5 bg-gray-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center mb-5">
+                <br>
+                <br>
+                <h2>Welcome</h2>
+                <p class="lead">If you&#39;re not satisfied, contact us within the first 30 days and we&#39;ll send you
+                    a full refund.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card-body">
+                            <h3 class="text-gradient text-info">Payment </h3>
+                            <p>You have the option of paying either online or <a routerLink="/events" style="color: brown;"> <u>on the day of the event !</u></a></p>
+                            <div class="row mt-5 mb-2">
+                            
+                                <div class="col-6">
+                                    <hr class="horizontal dark">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <form id="contact-form" method="post" autocomplete="off">
+                                    {{event.priceEvent}}
+                                    <div class="card-body pb-2">
+                                        <div class="form-group mb-0 mt-md-0 mt-4">
+                                            <label>Card number : </label>
+                                            <input class="form-control" placeholder="Card number" type="text" name="stripeToken" [(ngModel)]="paye.stripeToken">
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 my-auto">
+                        <div class="card-body text-center">
+                            <h6 class="mt-4 mb-0">Pay once, own it forever.</h6>
+                            <h1 class="mt-0">
+                                <small>{{event.priceEvent}} DT</small>
+                            </h1>
+                            <button type="button" class="btn bg-gradient-primary btn-lg mt-2" (click)="pay()">Pay</button>
+                            <p class="text-sm">Thank you !</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+    
+</section>
+

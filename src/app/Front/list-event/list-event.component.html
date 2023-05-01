@@ -1,0 +1,113 @@
+<app-navbar-event></app-navbar-event>
+
+
+<header>
+  <div class="page-header min-vh-50" style="background-image: url(../../assets/Front/img/05_3.jpg)">
+    <span class="mask "></span>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-white text-center">
+          <div class="bg-gradient-dark">
+          <h2 class="text-white ">Don't miss the opportunity</h2>
+          <p class="lead text-center ">"Opportunities are often hidden behind hard work. That's why few people
+            recognize them."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="position-relative overflow-hidden" style="height:36px;margin-top:-35px;">
+    <div class="w-full absolute bottom-0 start-0 end-0"
+      style="transform: scale(2);transform-origin: top center;color: #fff;">
+      <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+      </svg>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row bg-white shadow-lg mt-n6 border-radius-md pb-4 p-3 mx-sm-0 mx-1 position-relative">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-8 mx-auto mt-4 mb-3">
+          <div class="nav-wrapper">
+            <ul class="nav nav-pills nav-pills-info nav-fill p-1" id="tabs-pricing" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link mb-sm-3 mb-md-0 "  routerLink="/events" role="tab" aria-controls="tabs-pricing-tab-1" aria-selected="true">
+                  All       
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mb-sm-3 mb-md-0 "  role="tab" aria-controls="tabs-pricing-tab-1" aria-selected="true">
+                  |       
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mb-sm-3 mb-md-0 "   routerLink="/leiseur"  aria-controls="tabs-pricing-tab-2" aria-selected="false">
+                  Leiseure
+                </a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link mb-sm-3 mb-md-0 "   role="tab" aria-controls="tabs-pricing-tab-1" aria-selected="true">
+                  |       
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mb-sm-3 mb-md-0 "  routerLink="/educ" role="tab" aria-controls="tabs-pricing-tab-2" aria-selected="false">
+                  Educational
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- -------- END HEADER 4 w/ search book a ticket form ------- -->
+
+<section class="py-4">
+
+  
+
+  <div class="page-header min-vh-100">
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-lg-4 px-3" *ngFor="let e of listEvent">
+          <a [routerLink]="['/event', e.idEvent]" style="color: rgb(122, 116, 116);">
+            <div class="card  move-on-hover">
+              <img class="card-img-top" src="data:image/png;base64,{{e.imageEvent}}" width="500px" height="600px" />
+              <div class="position-relative overflow-hidden" style="height:50px;margin-top:-50px;">
+                <div class="position-absolute w-100 top-0 z-index-1">
+                  <svg class="waves waves-sm" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none"
+                    shape-rendering="auto">
+                    <defs>
+                      <path id="card-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+                      </path>
+                    </defs>
+                    <g class="moving-waves">
+                      <use xlink:href="#card-wave" x="48" y="-1" fill="rgba(255,255,255,0.30"></use>
+                      <use xlink:href="#card-wave" x="48" y="3" fill="rgba(255,255,255,0.35)"></use>
+                      <use xlink:href="#card-wave" x="48" y="5" fill="rgba(255,255,255,0.25)"></use>
+                      <use xlink:href="#card-wave" x="48" y="8" fill="rgba(255,255,255,0.20)"></use>
+                      <use xlink:href="#card-wave" x="48" y="13" fill="rgba(255,255,255,0.15)"></use>
+                      <use xlink:href="#card-wave" x="48" y="16" fill="rgba(255,255,255,0.99)"></use>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              <div class="card-body text-center">
+                <h4>{{ e.titleEvent }}</h4>
+                <p>
+                 <strong> Start date :</strong>  {{e.dateS | date: 'dd/MM/yyyy HH:mm'}}
+                </p>
+                <p> <strong>Final date :</strong> {{e.dateF | date: 'dd/MM/yyyy HH:mm'}}</p>
+
+              </div>
+              </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>

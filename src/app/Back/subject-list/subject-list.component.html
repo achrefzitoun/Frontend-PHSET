@@ -1,0 +1,68 @@
+<app-nav-bar-back></app-nav-bar-back>
+
+<div class="container-scroller">
+
+    <app-nav-vertical></app-nav-vertical>
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title">APP0 Details</h3>
+
+            </div>
+            
+                <div class="col-lg-11 grid-margin stretch-card">
+
+                    <div class="card">
+
+                        <div class="card-body">
+                            
+                            <h5 style="color: #990100;"></h5>
+
+                            <p class="card-description"> <code style="font-weight: 600;">List Subjects</code>
+                            </p>
+                            <div class="page-header">
+                                <h3></h3>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            <a  style="color: red" (click)="getWinner()">Get The Winner Of APP0</a>
+                                        </li>
+                                        <li class="breadcrumb-item">Time left: {{ formatTimeLeft() }}</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                            
+                            <br>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Title Subject</th>
+                                            <th>Description</th>
+                                            <th>Title Thematic</th>
+                                            <th>Team Name</th>
+                                            
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngFor="let su of sub">
+                                            <tr>
+
+                                                <td>{{su.nameSubject}}</td>
+                                                <td>{{su.descriptionSubject}}</td>
+                                                <td>{{su.thematic.titleThem}}</td>
+                                                <td>{{su.team.nameTeam}}</td>
+                                                
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            
+        </div>
+    </div>

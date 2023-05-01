@@ -1,0 +1,99 @@
+<app-nav-bar-back></app-nav-bar-back>
+
+
+<div class="container-scroller">
+
+  <app-nav-vertical></app-nav-vertical>
+
+
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title">Add Event</h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Delete</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Edit </li>
+          </ol>
+        </nav>
+      </div>
+      <form #f="ngForm">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-8 mx-auto">
+              <div class="card ">
+                <div class="card-body ">
+                  <h4 class="card-title">Add new event</h4>
+                  <p class="card-description">...</p>
+                  <div class="form-group">
+                    <label>Type Event</label>
+                    <select class="form-control" name="eventType" [(ngModel)]="event.typeEvent">
+                      <option value="APP0">APP0</option>
+                      <option value="Educational_Event">Educational Event</option>
+                      <option value="Leisure_Event">Leisure Event</option>
+                    </select>
+                  </div>
+                  <form class="forms-sample">
+                    <div class="form-group">
+                      <label>Title </label>
+                      <input type="text" class="form-control"  name="eventtitle" placeholder="Title" [(ngModel)]="event.titleEvent" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleSelectGender">Start Date </label>
+                      <input type="datetime-local" class="form-control" name="dates" id="exampleInputName1" placeholder="Start Date"
+                        [(ngModel)]="dates" />
+                    </div>
+                    <div class="form-group">
+                      <label>Closing Date</label>
+                      <input type="datetime-local" class="form-control" name="datef" placeholder="Closing Date"
+                        [(ngModel)]="datef" />
+                    </div>
+                    <div class="form-group">
+                      <label>Number of participations</label>
+                      <input type="number" class="form-control" placeholder="Nbr Participations" name="nbpart"
+                        [(ngModel)]="event.nbPartEvent" />
+                    </div>
+                    <div class="form-group">
+                      <label>Mode Payement</label>
+                      <select class="form-control" name="montant" [(ngModel)]="event.modePay" name="modepay"> 
+                        <option value="Paid">Paid</option>
+                        <option value="Unpaid">Unpaid</option>
+
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Price</label>
+                      <input type="text" class="form-control" placeholder="Price" [(ngModel)]="event.priceEvent" name="price" />
+                    </div>
+
+                    <div class="form-group">
+                      <label>Mode Event</label>
+                      <select class="form-control" [(ngModel)]="event.modeEvent" name="modeevent">
+                        <option value="Face_To_Face">Face To Face</option>
+                        <option value="Online">Online</option>
+                      </select>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label>Description</label>
+                      <textarea class="form-control" placeholder="Description" name="desc"
+                        [(ngModel)]="event.descriptionEvent"></textarea>
+                    </div>
+                    <form>
+                      <label for="file-upload">Choose a file:</label>
+                      <input type="file" id="file-upload" name="file-upload" (change)="onFileSelected($event)">
+                    </form>
+                    <button type="submit" class="btn btn-primary mr-2" (click)="addEvent()" routerLink="/Viewev"> Submit </button>
+                    <button class="btn btn-light" routerLink='/Viewev'>Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
