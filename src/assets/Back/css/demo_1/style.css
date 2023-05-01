@@ -11103,6 +11103,10 @@ code {
 .main-panel .content-wrapper .star-color {
   color: #fdb82c; }
 
+  .main-panel .content-wrapper .esprit-color {
+    color: #990100; }
+
+
 .main-panel .content-wrapper .br-theme-css-stars .br-widget a:after {
   content: "\2605";
   font-size: 15px;
@@ -13638,6 +13642,7 @@ dl {
   .preview-list.bordered .preview-item:last-child {
     border-bottom: 0; }
 
+    
 /* Tables */
 .table {
   margin-bottom: 0; }

@@ -1,0 +1,206 @@
+<app-nav-bar></app-nav-bar>
+
+<header class="header-2" style="background-color: #efefed;">
+    <div class="page-header min-vh-75 relative"
+        style="background-image: url('../../assets/Front/img/curved-images/template1.jpg')" *ngIf="mcq.score == 0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 text-center mx-auto">
+                </div>
+            </div>
+        </div>
+
+        <div class="position-absolute w-100 z-index-1 bottom-0" >
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="moving-waves">
+                    <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40)" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)" />
+                    <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)" />
+                    <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)" />
+                    <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,255)" />
+                </g>
+            </svg>
+        </div>
+        
+    </div>
+</header>
+
+<body style="background-color: white;">
+
+    <div *ngIf="i == 10">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 my-auto">
+                    <h1 class="display-1 text-bolder text-gradient text-primary">{{mcq.title}}</h1><br> 
+                    <h2>Your already pass the MCQ</h2>
+                    <button type="button" class="btn bg-gradient-danger mt-4">Go to Homepage</button>
+                </div>
+                <div class="col-lg-6 my-auto position-relative">
+                    <img class="w-100 position-relative" src="../../../assets/Front/img/illustrations/error-404.png"
+                        alt="404-error">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="mcq.score == 0">
+        <section class="my-5 py-5" style="background-color: white;">
+            <div class="container">
+                <div class="row">
+                    <div class="row justify-content-center text-center my-sm-5">
+                        <div class="col-lg-6">
+                            <h2 class="text-dark mb-0">{{mcq.title}}</h2>
+                            <h2 class="text-primary text-gradient">You have 10 minutes to finish the test</h2>
+                            <p class="lead">We have created multiple options for you to put together and customise into
+                                pixel perfect
+                                pages. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            <div class="container mt-sm-5 mt-3">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="position-sticky pb-lg-5 pb-3 mt-lg-0 mt-5 ps-2 text-center" style="top: 100px">
+                            <h3>Questions</h3>
+                            <h5 style="color: #990100;">Time left: {{ formatTimeLeft() }}</h5>
+                            <button class="btn bg-gradient-primary btn-icon btn-lg" type="button" (click)="calculateScore()">
+                                <div class="align-items-right">
+                                    Done
+                                    <i class="mdi mdi-check-all" aria-hidden="true"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-9">
+                        <div class="row mt-3">
+                            <!-- Buttons color -->
+                            <div class="col-12">
+                                <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-7">
+                                    <div class="container border-bottom">
+                                        <div class="row justify-space-between py-2"
+                                            *ngFor="let question of mcq.questions ; let y = index">
+                                            <hr class="horizontal dark mb-3">
+                                            <div class="col-lg-15 me-auto">
+                                                <p class="lead text-dark pt-1 mb-0">{{ y+1 }}. {{
+                                                    question.nameQuestion }}</p>
+                                            </div>
+                                            <br><br>
+                                            <div class="form-check me-3">
+                                                <input class="form-check-input" type="radio"
+                                                    name="{{question.idQuestion}}"
+                                                    id="{{question.responses[0].idResponse}}"
+                                                    (click)="onAnswerSelected()">
+                                                <label class="form-check-label"
+                                                    for="{{question.responses[0].idResponse}}">
+                                                    {{question.responses[0].response}}
+                                                </label>
+                                            </div>
+                                            <br>
+                                            <div class="form-check me-3">
+                                                <input class="form-check-input" type="radio"
+                                                    name="{{question.idQuestion}}"
+                                                    id="{{question.responses[1].idResponse}}"
+                                                    (click)="onAnswerSelected()">
+                                                <label class="form-check-label"
+                                                    for="{{question.responses[1].idResponse}}">
+                                                    {{question.responses[1].response}}
+                                                </label>
+                                            </div>
+                                            <br>
+                                            <div class="form-check me-3">
+                                                <input class="form-check-input" type="radio"
+                                                    name="{{question.idQuestion}}"
+                                                    id="{{question.responses[2].idResponse}}"
+                                                    (click)="onAnswerSelected()">
+                                                <label class="form-check-label"
+                                                    for="{{question.responses[2].idResponse}}">
+                                                    {{question.responses[2].response}}
+                                                </label>
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    </div>
+
+
+
+</body>
+
+<!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
+<footer class="footer py-10">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mb-4 mx-auto text-center">
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+            Company
+          </a>
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+            About Us
+          </a>
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+            Team
+          </a>
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+            Products
+          </a>
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+            Blog
+          </a>
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+            Pricing
+          </a>
+        </div>
+        <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
+            <span class="text-lg fab fa-dribbble"></span>
+          </a>
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
+            <span class="text-lg fab fa-twitter"></span>
+          </a>
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
+            <span class="text-lg fab fa-instagram"></span>
+          </a>
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
+            <span class="text-lg fab fa-pinterest"></span>
+          </a>
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
+            <span class="text-lg fab fa-github"></span>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8 mx-auto text-center mt-1">
+          <p class="mb-0 text-secondary">
+            Copyright © <script>document.write(new Date().getFullYear())</script> Soft by Creative Tim.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <app-chat-bot></app-chat-bot>
+
+  <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->

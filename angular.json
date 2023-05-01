@@ -27,9 +27,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/Back/js/off-canvas.js",
+              "src/assets/Back/js/hoverable-collapse.js",
+              "src/assets/Back/js/misc.js",
+              "src/assets/Back/js/settings.js",
+              "src/assets/Back/js/todolist.js",
+              "src/assets/Back/js/typeahead.js",
+              "src/assets/Back/js/file-upload.js",
+              "src/assets/Back/js/select2.js"
+            ]
           },
           "configurations": {
             "production": {

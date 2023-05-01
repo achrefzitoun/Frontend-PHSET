@@ -1,0 +1,92 @@
+<app-nav-bar></app-nav-bar>
+<header class="header-2" style="background-color: #e9ecef;">
+    <div class="page-header min-vh-75 relative"
+        style="background-image: url('../../../assets/Front/img/cómo-hacer-una-encuesta.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 text-center mx-auto">
+                </div>
+            </div>
+        </div>
+        <div class="position-absolute w-100 z-index-1 bottom-0">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="moving-waves">
+                    <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40)" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)" />
+                    <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)" />
+                    <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)" />
+                    <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255, 255, 255 ,255)" />
+                </g>
+            </svg>
+        </div>
+    </div>
+</header>
+
+<section class="pt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <h2 class="text-gradient text-primary text-center">Evaluation grid</h2>
+                <p>Interview : {{interview.typeInterview }}</p>
+                <p>Interview Date : {{interview.dateInterview | date: 'dd/MM/yyyy HH:mm' }}</p>
+            </div>
+            <div class="col-lg-10">
+                <div class="table-responsive">
+                    <table class="table table-pricing">
+                        <thead class="text-light">
+                            <tr>
+                                <th class="ps-2">
+                                    <h6 class="font-weight-bolder text-center text-darker mb-0">Evaluations</h6>
+                                </th>
+                                <th class="ps-2">
+                                    <h6 class="font-weight-bolder text-center text-darker mb-0">Task</h6>
+                                </th>
+                                <th class="ps-2">
+                                    <h6 class="font-weight-bolder text-center text-darker mb-0">Note</h6>
+                                </th>
+                                <th class="ps-2">
+                                    <h6 class="font-weight-bolder text-center text-darker mb-0">Remark</h6>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let eval of gridEval.evaluations">
+                                <tr>
+                                    <td class="px-3" style="color: #990100;">{{ eval.taskEval }}</td>
+                                    <td class="px-3">
+                                        <ng-container *ngFor="let task of eval.taskEvaluation">
+                                            <p>{{ task.performence }}</p>
+                                        </ng-container>
+                                    </td>
+                                    <td class="px-3">
+                                        <ng-container *ngFor="let task of eval.taskEvaluation">
+                                            <input type="number" placeholder="Note" min="0" class="form-control"
+                                                [(ngModel)]="task.note" value="task.note">
+                                        </ng-container>
+                                    </td>
+                                    <td class="px-3">
+                                        <ng-container *ngFor="let task of eval.taskEvaluation">
+                                            <input type="text" placeholder="Remark" class="form-control"
+                                                [(ngModel)]="task.remark" value="task.remark"  >
+                                        </ng-container>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                        <button type="button" class="btn bg-gradient-danger w-100" id="submitButton"
+                            (click)="saveTaskEvaluations()">Save</button>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<app-chat-bot></app-chat-bot>

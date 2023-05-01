@@ -1,0 +1,123 @@
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="stylesheet" href="/assets/Back/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="/assets/Back/vendors/flag-icon-css/css/flag-icon.min.css">
+  </head>
+<!-- Bouton de déclenchement du chatbot -->
+<div id="chatbot-trigger" (click)="toggleChatbot()">
+  <i class="mdi mdi-wechat"></i>
+</div>
+<!-- Panneau de chatbot -->
+<div id="chatbot-panel" *ngIf="showChatbot">
+  <div id="chatbot-header">
+    <div id="chatbot-title">Esprit chatbot</div>
+    <div id="chatbot-close" (click)="toggleChatbot()">
+      <i class="fas fa-times"></i>
+    </div>
+  </div>
+  <div id="chatbot-body">
+    <div *ngFor="let message of messages" class="chatbot-message {{ message.type }}">
+      {{ message.text }}
+    </div>
+  </div>
+  <div id="chatbot-input">
+    <input type="text" [(ngModel)]="newMessageText" (keyup.enter)="sendQuestion(newMessageText)">
+    <button (click)="sendQuestion(newMessageText)">Send</button>
+  </div>
+</div>
+  
+
+
+<style>
+    #chatbot-trigger {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        background-color: #990100;
+        color: #fff;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    #chatbot-trigger i {
+        font-size: 24px;
+    }
+
+    #chatbot-panel {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        z-index: 9999;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        max-height: 400px;
+        overflow-y: auto;
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #chatbot-header {
+        background-color: #990100;
+        color: #fff;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #chatbot-title {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    #chatbot-close {
+        cursor: pointer;
+    }
+
+    #chatbot-close i {
+        font-size: 18px;
+    }
+
+    #chatbot-body {
+        padding: 10px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chatbot-message {
+        margin: 5px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        max-width: 80%;
+        word-wrap: break-word;
+    }
+
+    .received {
+        background-color: #e6e6e6;
+        align-self: flex-start;
+    }
+
+    .sent {
+        background-color: #990100;
+        color: #fff;
+        align-self: flex-end;
+    }
+
+    #chatbot-input {
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
