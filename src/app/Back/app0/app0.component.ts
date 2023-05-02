@@ -8,7 +8,9 @@ import { EventService } from 'src/app/Services/event.service';
   styleUrls: ['./app0.component.css']
 })
 export class APP0Component implements OnInit {
-
+  p!: number;
+  itemsPerPage: number = 8;
+  totalEvent: any;
   
   te!:Thematic;
   them!:Thematic[];

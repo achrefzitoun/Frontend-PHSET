@@ -16,7 +16,7 @@
                 <hr class="horizontal dark">
                 <div class="d-flex justify-content-center">
                     <button type="button" class="btn bg-gradient-secondary btn-sm mb-0"
-                        data-bs-dismiss="toast">Close</button>
+                        data-bs-dismiss="toast" routerLink='/upload'>Close</button>
                 </div>
             </div>
         </div>
@@ -57,7 +57,7 @@
 
                                     <div class="col-md-12 text-center">
                                         <button type="submit" class="btn bg-gradient-primary mt-3 mb-0"
-                                            (click)="add()">Send Message</button>
+                                            (click)="add()" routerLink="/listpost" >Send </button>
                                     </div>
                                 </div>
                             </div>
@@ -68,3 +68,4 @@
         </div>
     </div>
 </header>   
+<app-footer></app-footer>

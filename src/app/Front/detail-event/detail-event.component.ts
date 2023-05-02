@@ -41,13 +41,16 @@ export class DetailEventComponent implements OnInit {
   reservation(id: number) {
     this.id = this.event.idEvent;
     this.service.reservationEvent(id).subscribe(reserv => {
-      this.reserv.idRes = reserv.idRes;
-      this.router.navigate(['/paiement/'+reserv.idRes]);
-    
+      if (reserv) {
+        this.reserv = reserv;
+        this.reserv.idRes = reserv.idRes;
+        alert("The reservation has been successfully completed Check your reservation list!");
+      } else {
+        console.log("La réponse de la méthode reservationEvent() est undefined.");
+      }
     });
-    
+}
 
-  }
 
 
   estDesactive(dateDebut: Date) {

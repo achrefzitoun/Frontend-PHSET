@@ -1,0 +1,99 @@
+<app-navbar-event></app-navbar-event>
+
+<section class="pt-5 mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-10">
+                <br>
+                <br>
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Title Event</th>
+                                    <th
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Date Reservation</th>
+
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Etat Paiement</th>
+
+                                    <th class="text-secondary opacity-7"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let r of resev | paginate: { itemsPerPage: 4, currentPage: p }">
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-xs">{{r.event.titleEvent}}</h6>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs text-secondary mb-0">{{r.dateRes | date: 'dd/MM/yyyy
+                                                HH:mm'}}</p>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div *ngIf="r.confirmPay == true">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="me-2 text-xs">Paid</span>
+                                                    <div>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-success" role="progressbar"
+                                                                aria-valuenow="100" aria-valuemin="0"
+                                                                aria-valuemax="100" style="width: 100%;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="r.confirmPay == false">
+
+                                                <div class="d-flex align-items-center">
+
+                                                    <span class="me-2 text-xs">Not paid</span>
+                                                    <div>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-success" role="progressbar"
+                                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="0"
+                                                                style="width: 0%;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <div *ngIf="r.confirmPay == false">
+                                            <td class="align-middle">
+                                                <a [routerLink]="['/paiement',r.idRes]"
+                                                    class="text-secondary font-weight-bold text-xs"
+                                                    data-original-title="Edit user" style="color: #990100;">
+                                                    Pay
+                                                </a>
+                                            </td>
+                                        </div>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="mt-8 py-5 d-flex justify-content-center align-items-center">
+                    <div class="text-center">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<br>
+<br>
+<app-footer></app-footer>

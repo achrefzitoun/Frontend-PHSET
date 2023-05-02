@@ -46,7 +46,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <ng-container *ngFor="let su of sub">
+                                        <ng-container *ngFor="let su of sub | paginate: { itemsPerPage: 8, currentPage: p }">
                                             <tr>
 
                                                 <td>{{su.nameSubject}}</td>
@@ -62,7 +62,12 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="mt-8 py-5 d-flex justify-content-center align-items-center">
+                    <div class="text-center">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div>
+                </div>
             
         </div>
     </div>
+</div>

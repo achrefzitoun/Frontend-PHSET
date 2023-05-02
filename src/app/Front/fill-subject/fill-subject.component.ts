@@ -13,37 +13,46 @@ import { EventService } from 'src/app/Services/event.service';
 })
 export class FillSubjectComponent implements OnInit {
 
-  event!:Event;
-  constructor(private serv : EventService, private router: Router) { }
-  sub!:Subject;
-  them!:Thematic[];
-  team!:Team;
-  nos!:string;
-  id!:number;
+  event!: Event;
+  constructor(private serv: EventService, private router: Router) { }
+  sub!: Subject;
+  them!: Thematic[];
+  team!: Team;
+  nos!: string;
+  id!: number;
 
   ngOnInit(): void {
     this.sub = new Subject;
     this.serv.eventsApp0().subscribe(data => {
       this.event = data;
-     
+
     });
     this.serv.getThematic().subscribe({
-      next : (data) => this.them = data 
-     });
-
-     this.serv.getTeam().subscribe(d => this.team=d)
-       
-  }
- 
-  submit(){
-    
-    this.serv.putSubjTeamThem(this.sub,this.id,this.nos,this.team.idTeam).subscribe(() => {
-      // navigate to Viewev view after the event is updated
-      this.router.navigate(['/subject']);
+      next: (data) => this.them = data
     });
+
+    this.serv.getTeam().subscribe(d => this.team = d)
+
   }
-  onThematicChange(idThem: number) {
-   this.id=idThem
+  message: string = '';
+
+  submit() {
+
+    this.serv.putSubjTeamThem(this.sub, this.id, this.nos, this.team.idTeam).subscribe(
+      response => {
+        this.message = response.toString();
+        //this.router.navigate(["/subject"])
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+  }
+
+
+onThematicChange(idThem: number) {
+  this.id = idThem
+}
 }
 
-}

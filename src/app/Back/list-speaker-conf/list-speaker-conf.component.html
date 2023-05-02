@@ -1,5 +1,11 @@
 <app-nav-bar-back></app-nav-bar-back>
+<style>
+    
+    .search-input {
+    width: 500px;
 
+}
+</style>
 
 <div class="container-scroller">
     <app-nav-vertical></app-nav-vertical>
@@ -32,7 +38,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <ng-container *ngFor="let s of speaker" >
+                                                <ng-container *ngFor="let s of speaker " >
                                                 <tr>
                                                     <td>{{s.nameSpeaker}}</td>
                                                     <td>{{s.biography}} </td>
@@ -90,6 +96,8 @@
                             <h4 class="card-title">EVENTS / SPEAKERS</h4>
                             <p class="card-description"><code>List Of Confirmed Speakers</code>
                             </p>
+                            <input type="text" class="form-control search-input mx-auto border-3 " placeholder="Search" [(ngModel)]="searchTerm">
+
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
@@ -101,10 +109,11 @@
                                     </thead>
                                     <tbody>
                                         <ng-container *ngFor="let e of event" >
-                                            <tr *ngIf="e.speakersconf.length !== 0">
+                                            <tr *ngIf="e.speakersconf.length !== 0 &&  e.titleEvent.toLowerCase().includes(searchTerm.toLowerCase()) ">
        
                                             <td>{{e.titleEvent}}</td>
                                             <ng-container *ngFor="let s of e.speakersconf" >
+                                                
                                             <td>{{s.nameSpeaker}}</td>
                                         </ng-container>
                                         

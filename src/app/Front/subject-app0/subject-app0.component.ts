@@ -10,9 +10,14 @@ import { EventService } from 'src/app/Services/event.service';
 export class SubjectApp0Component implements OnInit {
 
   event!:Event;
+  today = new Date();
+  formattedString !:any;
   constructor(private serv : EventService) { }
   
   ngOnInit(): void {
+    const today = new Date();
+    const isoString = today.toISOString(); // "2023-05-01T13:12:34.567Z"
+    this.formattedString = isoString.slice(0, -5) + '00';
     this.serv.eventsApp0().subscribe(data => {
       this.event = data;
      

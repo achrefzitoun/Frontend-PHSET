@@ -43,9 +43,10 @@
               <u>{{ getPreviousDate(event.dateS) | date: 'dd/MM/yyyy HH:mm' }} </u>!
             </p>
             <div class="buttons w-100">
-              
+              <div *ngIf="event.dateS>formattedString">
               <button type="button" class="btn btn-outline-dark mb-0 ms-1" routerLink='/fill' >Fill in the information</button>
             </div>
+        </div>
            
           </div>
         </div>
@@ -54,3 +55,4 @@
   </div>
   
   <!-- -------- END CONTENT 10 w/ card over right bg image ------- -->
+  <app-footer></app-footer>

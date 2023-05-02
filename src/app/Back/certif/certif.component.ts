@@ -10,6 +10,9 @@ import { EventService } from 'src/app/Services/event.service';
 })
 export class CertifComponent implements OnInit {
 
+  p!: number;
+  itemsPerPage: number = 8;
+  totalEvent: any;
   
   certif!:Certif[];
   constructor(private ser : EventService , public sanitizer: DomSanitizer) { }

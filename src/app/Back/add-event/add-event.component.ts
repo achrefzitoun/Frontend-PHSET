@@ -11,13 +11,13 @@ import { EventService } from 'src/app/Services/event.service';
 })
 export class AddEventComponent implements OnInit {
 
-  event!:Event;
-  room!:Room[];
+  event!: Event;
+  room!: Room[];
   myFile!: File;
-  dates!:string;
-  datef!:string;
-  
-  constructor( private service : EventService, private router : Router) { }
+  dates!: string;
+  datef!: string;
+
+  constructor(private service: EventService, private router: Router) { }
 
   ngOnInit(): void {
     this.event = new Event();
@@ -26,13 +26,17 @@ export class AddEventComponent implements OnInit {
   onFileSelected(event: any) {
     this.myFile = event.target.files[0];
   }
-  
+
   addEvent() {
-    this.service.addEvent(this.event, this.myFile, this.dates,this.datef)
-      .subscribe(() => {
-        // navigate to Viewev view after the event is updated
+    this.service.addEvent(this.event, this.myFile, this.dates, this.datef)
+      .subscribe(response => {
+        console.log(response);
         this.router.navigate(['/Viewev']);
-      });
+      },
+        error => console.error(error)
+      );
   }
 
 }
+
+

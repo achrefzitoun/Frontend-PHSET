@@ -14,7 +14,13 @@ export class ListSpeakerConfComponent implements OnInit {
   speakers!:Speaker[];
   speaker!:Speaker[];
   s!:Speaker;
-  
+
+  p!: number;
+  itemsPerPage: number = 8;
+  totalEvent: any;
+
+  public searchTerm: string = '';
+
 
   constructor(private service : EventService , private router : Router) { }
 

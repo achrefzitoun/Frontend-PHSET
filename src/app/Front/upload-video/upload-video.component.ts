@@ -28,6 +28,7 @@ export class UploadVideoComponent implements OnInit {
     this.service.createPost(this.postvid, this.myFile).subscribe(
       response => {
         this.message=response.toString();
+        
         },
         error => {
         console.log(error);

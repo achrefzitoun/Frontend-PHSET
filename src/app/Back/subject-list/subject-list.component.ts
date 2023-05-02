@@ -10,6 +10,10 @@ import { EventService } from 'src/app/Services/event.service';
 })
 export class SubjectListComponent implements OnInit {
 
+  p!: number;
+  itemsPerPage: number = 8;
+  totalEvent: any;
+
   
   sub!: Subject[];
   constructor(private service: EventService) { }

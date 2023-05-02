@@ -36,6 +36,16 @@ import { UploadVideoComponent } from './Front/upload-video/upload-video.componen
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CalenderComponent } from './Front/calender/calender.component';
 import { StatComponent } from './Back/stat/stat.component';
+import { ListReservComponent } from './Front/list-reserv/list-reserv.component';
+import { DetailSubjectsComponent } from './Front/detail-subjects/detail-subjects.component';
+import { EditSubjectComponent } from './Front/edit-subject/edit-subject.component';
+import { ViewPostsComponent } from './Back/view-posts/view-posts.component';
+import { ResvComponent } from './Back/resv/resv.component';
+import { StatReservComponent } from './Back/stat-reserv/stat-reserv.component';
+
+import { CommonModule } from '@angular/common';
+import { CalenderssComponent } from './Back/calenderss/calenderss.component';
+
 
 @NgModule({
   declarations: [
@@ -69,14 +79,24 @@ import { StatComponent } from './Back/stat/stat.component';
     SubjectApp0Component,
     UploadVideoComponent,
     CalenderComponent,
-    StatComponent
+    StatComponent,
+    ListReservComponent,
+    DetailSubjectsComponent,
+    EditSubjectComponent,
+    ViewPostsComponent,
+    ResvComponent,
+    StatReservComponent,
+    CalenderssComponent,
+    
+    
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

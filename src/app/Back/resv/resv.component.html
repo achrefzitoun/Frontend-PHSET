@@ -1,0 +1,114 @@
+<app-nav-bar-back></app-nav-bar-back>
+<style>
+    .pagination>.page-item>.page-link.custom-button-color {
+        background-color: red;
+        border-color: red;
+        color: #fff;
+    }
+    .search-input {
+    width: 500px;
+    }
+</style>
+<div class="container-scroller">
+
+    <app-nav-vertical></app-nav-vertical>
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title">Event Details</h3>
+                
+            </div>
+
+            <div class="col-lg-11 grid-margin stretch-card">
+
+                <div class="card">
+
+                    <div class="card-body">
+
+
+                        <p class="card-description"> <code>List Reservations</code>
+                        </p>
+                        <div class="page-header">
+                            <h3></h3>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                              <li class="breadcrumb-item">
+                                  <a routerLink="/statRes" style="color: #990100">Statistic of Reservations</a>
+                              </li>
+                            </ol>
+                          </nav>
+                     </div>
+                     <input type="text" class="form-control search-input mx-auto border-3 " placeholder="Search" [(ngModel)]="searchTerm">
+
+                       <br>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Title Event</th>
+                                        <th>Reservation Date</th>
+                                        <th>Email User</th>
+                                        <th>Presence status</th>
+                                        <th>Payment status</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container
+                                        *ngFor="let r of listRes  | paginate: { itemsPerPage: 4, currentPage: p }">
+                                        <tr *ngIf="r.event.titleEvent.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                        r.dateRes.toLocaleString().toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                        r.account.emailAccount.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                        r.confirmPay.toString().toLowerCase().includes(searchTerm.toLowerCase())
+                                        ">
+
+                                            <td>{{r.event.titleEvent}}</td>
+                                            <td>{{r.dateRes | date: 'dd/MM/yyyy HH:mm'}}</td>
+
+                                            <td>{{r.account.emailAccount}}</td>
+                                            <div *ngIf="r.etatPres == true">
+                                                <td>
+                                                    <label class="badge badge-success">Present</label>
+                                                </td>
+                                            </div>
+                                            <td>
+                                                <div *ngIf="r.confirmPay == true">
+
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-success" role="progressbar"
+                                                            style="width: 100%;" aria-valuenow="25" aria-valuemin="0"
+                                                            aria-valuemax="100"> Paid</div>
+                                                    </div>
+
+                                                </div>
+                                                <div *ngIf="r.confirmPay == false">
+
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-danger" role="progressbar"
+                                                            style="width: 0%;" aria-valuenow="75" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                         
+
+                                        </tr>
+                        </ng-container>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 py-5 d-flex justify-content-center align-items-center">
+            <div class="text-center">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>

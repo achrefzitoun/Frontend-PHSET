@@ -108,7 +108,7 @@ updateEvent(event: Event, file: File): Observable<Event> {
   }
 }
 
-deleteEv(id:number){
+deleteEv(id:any){
   return this.http.delete("http://localhost:8081/Rev/event/deleteEvent/" + id);
 }
 
@@ -116,6 +116,19 @@ getSpeakers(){
   return this.http.get<Speaker[]>("http://localhost:8081/Rev/event/getSpeaker");
   
 }
+
+getAllReserv(){
+  return this.http.get<Reservation[]>("http://localhost:8081/Rev/event/allReserv");
+}
+
+getReservByAccount(){
+  return this.http.get<Reservation[]>("http://localhost:8081/Rev/event/getReservByAccount");
+}
+
+getSubjectByAccout(){
+  return this.http.get<Subject>("http://localhost:8081/Rev/event/getSubjectbyteam")
+}
+
 addSpeaker(s:Speaker){
   return this.http.post('http://localhost:8081/Rev/event/addSpeaker',s ); 
 }
@@ -173,6 +186,14 @@ private corsUrl = 'https://cors-anywhere.herokuapp.com/';
     return this.http.get(this.ok, { responseType: 'blob' });
   }
 
+  deletVideo(id:number){
+    return this.http.delete("http://localhost:8081/Rev/event/deletePostVid/"+id)
+  }
+
+  getAllRes(){
+    return this.http.get<Reservation[]>("http://localhost:8081/Rev/event/allReserv");
+  }
+
   likePost(id:number){
     return this.http.put<void>("http://localhost:8081/Rev/event/postslike/"+ id , null);
   }
@@ -186,14 +207,21 @@ private corsUrl = 'https://cors-anywhere.herokuapp.com/';
   }
   
   putSubjTeamThem(subject:Subject , idthem:number, name:string, idteam:number){
-   
-      
-    return this.http.put("http://localhost:8081/Rev/event/addandAssSubject/"+ idthem+"/"+idteam+"/"+name, subject);
+       
+    return this.http.put<String>("http://localhost:8081/Rev/event/addandAssSubject/"+ idthem+"/"+idteam+"/"+name, subject);
   }
 
 
   getSubject(){
     return this.http.get<Subject[]>("http://localhost:8081/Rev/event/getSubject");
+  }
+
+  getSubjectById(id:number){
+    return this.http.get<Subject>("http://localhost:8081/Rev/event/getSubject/"+id );
+  }
+
+  putSubject(subject:Subject){
+    return this.http.put("http://localhost:8081/Rev/event/updateSubject",subject);
   }
 
   getWinner(): Observable<any> {
@@ -224,4 +252,20 @@ private corsUrl = 'https://cors-anywhere.herokuapp.com/';
   countEventsByType(): Observable<{[key: string]: number}> {
     return this.http.get<{[key: string]: number}>("http://localhost:8081/Rev/event/countEventsByType");
   }
+  
+  getEventTypesSortedByReservat(): Observable<any> {
+    return this.http.get<any>("http://localhost:8081/Rev/event/stat");
+  }
+
+  generateCertif(id:number){
+    return this.http.put("http://localhost:8081/Rev/event/getCertif/"+id,null);
+  }
+
+  sorted(){
+    return this.http.get<Event[]>("http://localhost:8081/Rev/event/sort");
+  }
+  Reversed(){
+    return this.http.get<Event[]>("http://localhost:8081/Rev/event/rev");
+  }
+
 }

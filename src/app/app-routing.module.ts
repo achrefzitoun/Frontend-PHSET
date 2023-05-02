@@ -23,6 +23,14 @@ import { EditSpeakerComponent } from './Back/edit-speaker/edit-speaker.component
 import { FillSubjectComponent } from './Front/fill-subject/fill-subject.component';
 import { CalenderComponent } from './Front/calender/calender.component';
 import { StatComponent } from './Back/stat/stat.component';
+import { ListReservComponent } from './Front/list-reserv/list-reserv.component';
+import { DetailSubjectsComponent } from './Front/detail-subjects/detail-subjects.component';
+import { EditSubjectComponent } from './Front/edit-subject/edit-subject.component';
+import { ViewPostsComponent } from './Back/view-posts/view-posts.component';
+import { ResvComponent } from './Back/resv/resv.component';
+import { StatReservComponent } from './Back/stat-reserv/stat-reserv.component';
+import { CalenderssComponent } from './Back/calenderss/calenderss.component';
+
 
 const routes: Routes = [
   {path:'nav', component:NavBarComponent},
@@ -47,7 +55,14 @@ const routes: Routes = [
   {path:'editSp/:id',component:EditSpeakerComponent},
   {path:'fill',component:FillSubjectComponent},
   {path:"calen",component:CalenderComponent},
-  {path:"stat",component:StatComponent}
+  {path:"stat",component:StatComponent},
+  {path:'listResrv',component:ListReservComponent},
+  {path:'Subj', component:DetailSubjectsComponent},
+  {path:'editSubj/:id',component:EditSubjectComponent},
+  {path:'viewPost',component:ViewPostsComponent},
+  {path:'res',component:ResvComponent},
+  {path:'statRes',component:StatReservComponent},
+  {path:'Cal',component:CalenderssComponent}
 
 ];
 

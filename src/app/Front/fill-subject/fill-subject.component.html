@@ -28,17 +28,30 @@
         style="background-image: url('../../assets/Front/img/curved-images/app.jpg'); background-size: cover; ">
     </div>
     <div class="container">
+        <div *ngIf="message" class="toast fade show p-2 mx-auto mt-7" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="toast-body text-center">
+                {{ message }}
+                <hr class="horizontal dark">
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn bg-gradient-secondary btn-sm mb-0"
+                        data-bs-dismiss="toast">Close</button>
+                </div>
+            </div>
+        </div>
         <div class="row mt-7">
             <div class="col-lg-6 d-flex justify-content-center flex-column">
                 <div
                     class="card card-body d-flex justify-content-center shadow-lg border-radius-lg p-5 blur align-items-center z-index-2 shadow-blur">
                     <h2 class="text-gradient text-warning mb-4">{{event?.titleEvent}}</h2>
                     <h5 class="text-lg-start text-center mb-0"> Good Luck!</h5>
+
                     <br>
                     <br>
                     <form>
                         <div class="card-body">
                             <div class="row">
+
                                 <div class="form-group mb-4">
                                     <label>Team Name</label>
                                     <input name="message" class="form-control" id="message" rows="4"
@@ -61,8 +74,8 @@
                                     <label>Thematic</label>
                                     <br>
                                     <div class="form-check me-3" *ngFor="let t of them; let i=index">
-                                        <input class="form-check-input" type="radio" name="thematic"
-                                            id="{{t.idThem}}" (change)="onThematicChange(t.idThem)">
+                                        <input class="form-check-input" type="radio" name="thematic" id="{{t.idThem}}"
+                                            (change)="onThematicChange(t.idThem)">
                                         <label class="form-check-label" for="{{t.idThem}}"> {{t.titleThem}} :
                                             {{t.descriptionThem}}</label>
                                     </div>
@@ -72,8 +85,8 @@
 
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn bg-gradient-primary mt-3 mb-0"
-                                        (click)="submit()">Submit</button>
+                                    <button type="submit" class="btn bg-gradient-primary mt-3 mb-0" (click)="submit()"
+                                        routerLink="/subject">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -86,3 +99,5 @@
 </div>
 
 <!-- -------- END CONTENT 10 w/ card over right bg image ------- -->
+
+<app-footer></app-footer>

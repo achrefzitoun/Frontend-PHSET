@@ -25,13 +25,16 @@ export class PaiementComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    this.service.getReservById(this.id).subscribe();
     this.service.eventByres(this.id).subscribe(data => {
       this.event = data;
     });
+
     
   }
 
   pay() {
+    this.paye.montant=this.event.priceEvent;
     if (this.paye && this.event.priceEvent && this.paye.stripeToken) {
       this.service.pay(this.paye, this.id).subscribe(
       );
