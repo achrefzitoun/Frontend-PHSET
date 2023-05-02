@@ -11,15 +11,21 @@ import { EvaluationService } from 'src/app/Services/evaluation.service';
 export class ListQuestionsComponent implements OnInit {
   questions!:Question[];
   constructor(private ps : EvaluationService, private router: Router) { }
+  itemPerPage : number = 8 ;
+  p!:number;
+  totalQuestions : any;
 
   ngOnInit(): void {
+    
     this.ps.retrieveAllQuestion().subscribe({
-      next:(data)=>this.questions=data,
+      next:(data)=>{this.questions=data,
+      this.totalQuestions=data.length;}
     });
   }
 
   Delete(id: number){
     this.ps.deleteQuestion(id).subscribe();
+    location.reload();
   }
 
   Edit(id: number): void {

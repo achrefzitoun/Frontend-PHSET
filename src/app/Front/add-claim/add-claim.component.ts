@@ -13,7 +13,6 @@ export class AddClaimComponent implements OnInit {
   claim: Claim = new Claim();
   file!: File;
   isChecked: boolean = false;
-
   constructor(private ps : EvaluationService, private router: Router) { }
 
   ngOnInit(): void {
@@ -33,9 +32,11 @@ export class AddClaimComponent implements OnInit {
   onSubmit() {
     this.ps.addClaim(this.claim, this.file)
       .subscribe(
-        response => console.log(response),
+        response => {
+          console.log(response);
+          this.router.navigate(['/claims']);
+        },
         error => console.error(error)
       );
-      this.router.navigate(['/claims']);
   }
 }

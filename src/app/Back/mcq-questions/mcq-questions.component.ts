@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Question } from 'src/app/Models/Question';
 import { Response } from 'src/app/Models/Response';
 import { EvaluationService } from 'src/app/Services/evaluation.service';
@@ -11,7 +12,7 @@ import { EvaluationService } from 'src/app/Services/evaluation.service';
 export class MCQQuestionsComponent implements OnInit {
 
   question!:Question;
-  constructor(private ps: EvaluationService) { }
+  constructor(private ps: EvaluationService, private router: Router) { }
   response0!: Response;
   response1!: Response;
   response2!: Response;
@@ -30,7 +31,9 @@ export class MCQQuestionsComponent implements OnInit {
     this.question.responses.push(this.response2);
     this.ps.addQuestionAndResponse(this.question)
     .subscribe((result) => {
-      console.log(result);
-  })
+      window.alert(result);
+      this.router.navigate(['/listquestions'], { queryParams: { refresh: true }});
+  });
+
   }
 }

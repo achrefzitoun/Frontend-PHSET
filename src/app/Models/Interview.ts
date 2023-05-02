@@ -1,4 +1,5 @@
 import { GridEvaluation } from "./GridEvaluation";
+import { MCQ } from "./MCQ";
 import { User } from "./User";
 
 export class Interview {
@@ -12,7 +13,7 @@ export class Interview {
     typeInterview!: string;
     classroom: any; 
     juryAppreciation: any; 
-    mcqs!: any[]; 
+    mcqs!: MCQ[]; 
     gridEvaluation!: GridEvaluation; 
     condidat!: User; 
     jury!: User[]; 

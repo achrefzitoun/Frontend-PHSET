@@ -1,3 +1,4 @@
+import { Account } from "./Account";
 import { Decission } from "./Decission";
 import { EtatClaim } from "./EtatClaim";
 
@@ -9,4 +10,6 @@ export class Claim {
     dateClaim!: string;
     image!: ArrayBuffer; 
     decission!:Decission  ; 
+    account!:Account;
+    
 }

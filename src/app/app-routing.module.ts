@@ -19,6 +19,9 @@ import { EvaluateurInterviewComponent } from './Back/evaluateur-interview/evalua
 import { ClaimsExcelComponent } from './Back/claims-excel/claims-excel.component';
 import { EvaluatorsCalanderComponent } from './Back/evaluators-calander/evaluators-calander.component';
 import { DelibNoteComponent } from './Back/delib-note/delib-note.component';
+import { AddTasksAndEvaluationComponent } from './Back/add-tasks-and-evaluation/add-tasks-and-evaluation.component';
+import { ViewTasksAndEvaluationsComponent } from './Back/view-tasks-and-evaluations/view-tasks-and-evaluations.component';
+import { ConsultIntCondidatComponent } from './Front/consult-int-condidat/consult-int-condidat.component';
 
 const routes: Routes = [
   {path:'newclaims', component:AddClaimComponent},
@@ -39,6 +42,9 @@ const routes: Routes = [
   {path:'Excel', component:ClaimsExcelComponent},
   {path:'evalcalander',component:EvaluatorsCalanderComponent},
   {path:'delib',component:DelibNoteComponent},
+  {path:'neweval', component:AddTasksAndEvaluationComponent},
+  {path:'viewevaluations',component:ViewTasksAndEvaluationsComponent},
+  {path:'intcondidat',component:ConsultIntCondidatComponent}
 ];
 
 @NgModule({

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Claim } from '../Models/Claim';
 import { MCQ } from '../Models/MCQ';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { Interview } from '../Models/Interview';
 import { GridEvaluation } from '../Models/GridEvaluation';
 import { TaskEvaluation } from '../Models/TaskEvaluation';
@@ -12,6 +12,7 @@ import { User } from '../Models/User';
 import { Decission } from '../Models/Decission';
 import { EtatClaim } from '../Models/EtatClaim';
 import { ClaimsByMonth } from '../Models/ClaimsByMonth';
+import { Evaluation } from '../Models/Evaluation';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,8 @@ export class EvaluationService {
     return this.http.post(`${this.apiUrl}/addClaimAndAssignAccount`, formData, { responseType: 'text' });
   }
 
-  getMCQ(type: string){
-    return this.http.get<any>(`${this.apiUrl}/getmcq/` + type);
+  getMCQ(id: number){
+    return this.http.get<any>(`${this.apiUrl}/retrieveMCQ/` + id);
   }
 
   setScoreToMCQ(idMcq : number, score: number){
@@ -132,4 +133,47 @@ export class EvaluationService {
     return this.http.get<Interview[]>(`${this.apiUrl}/getCurrentJuryInterview`);
   }
 
+  addEvaluationAndTaskEvaluationAndAssignTaskToEvaluataion(evaluation: Evaluation): Observable<Evaluation> {
+    return this.http.put<Evaluation>(`${this.apiUrl}/EvaluationaAndTasks`, evaluation);
+  }
+
+  retrieveAllEvaluations(){
+    return this.http.get<Evaluation[]>(`${this.apiUrl}/retrieveAllEvaluations`);
+  }
+
+
+  searchClaims(date: string, firstName: string, object: string) {
+    const params: Record<string, any> = {};
+    if (date) {
+      params['a'] = date;
+    }
+    if (firstName) {
+      params['b'] = firstName;
+    }
+    if (object) {
+      params['c'] = object;
+    }
+    return this.http.get<any[]>(`${this.apiUrl}/searchClaims`, { params });
+  }
+
+  tendanceReclamation(){
+    return this.http.get<string>(`${this.apiUrl}/tendanceReclamation`, { responseType: 'text' as 'json' });
+  }
+
+  Sort(){
+    return this.http.get<Claim[]>(`${this.apiUrl}/getClaimsSortedByPriority`);
+  }
+  
+  countByEtatAndDateClaimIsAfter(){
+    return this.http.get(`${this.apiUrl}/countByEtatAndDateClaimIsAfter`);
+  }
+
+  assignScoreToInterview(){
+    return this.http.put(`${this.apiUrl}/assignScoreToInterview`,null);
+  }
+
+  desafecterProfInterview(idint:any,idprof:any){
+    return this.http.put(`${this.apiUrl}/desafecterProfInterview/`+idint+`/`+0,null);
+
+  }
 }

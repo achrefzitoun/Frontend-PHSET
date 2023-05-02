@@ -1,3 +1,4 @@
+import { Inscription } from "./Inscription";
 import { Interview } from "./Interview";
 
 export class User {
@@ -16,7 +17,7 @@ export class User {
     //nationality!: string;
     //role!: string;
     //userAvailabilities!: any[]; 
-    //inscription!: any; 
+    inscription!: Inscription; 
     interview!: Interview;
     interviewJury!: Interview[];
     }

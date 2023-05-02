@@ -28,6 +28,9 @@ import { EvaluateurInterviewComponent } from './Back/evaluateur-interview/evalua
 import { ClaimsExcelComponent } from './Back/claims-excel/claims-excel.component';
 import { EvaluatorsCalanderComponent } from './Back/evaluators-calander/evaluators-calander.component';
 import { DelibNoteComponent } from './Back/delib-note/delib-note.component';
+import { AddTasksAndEvaluationComponent } from './Back/add-tasks-and-evaluation/add-tasks-and-evaluation.component';
+import { ViewTasksAndEvaluationsComponent } from './Back/view-tasks-and-evaluations/view-tasks-and-evaluations.component';
+import { ConsultIntCondidatComponent } from './Front/consult-int-condidat/consult-int-condidat.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { DelibNoteComponent } from './Back/delib-note/delib-note.component';
     EvaluateurInterviewComponent,
     ClaimsExcelComponent,
     EvaluatorsCalanderComponent,
-    DelibNoteComponent
+    DelibNoteComponent,
+    AddTasksAndEvaluationComponent,
+    ViewTasksAndEvaluationsComponent,
+    ConsultIntCondidatComponent
   ],
   imports: [
     FormsModule,

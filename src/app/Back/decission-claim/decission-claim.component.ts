@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Claim } from 'src/app/Models/Claim';
 import { Decission } from 'src/app/Models/Decission';
 import { EtatClaim } from 'src/app/Models/EtatClaim';
@@ -18,7 +18,7 @@ export class DecissionClaimComponent implements OnInit {
   user!:User;
   decission!:Decission;
   
-  constructor(private ps: EvaluationService, private route: ActivatedRoute) { }
+  constructor(private ps: EvaluationService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.decission = new Decission;
@@ -33,7 +33,9 @@ export class DecissionClaimComponent implements OnInit {
     this.ps.addAndAssignDecissionToClaim(id, decission, this.etatt).subscribe();
   }
   
-
+  cancel(){
+    this.router.navigate(["/claimlist"]);
+  }
 
 
 }

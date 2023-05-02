@@ -17,8 +17,12 @@ export class ClaimStaticsComponent implements OnInit {
   
   ngOnInit() {
     this.ps.countClaimsByMonth().subscribe((data: ClaimsByMonth) => {
+      const currentMonth = new Date().toLocaleString('default', { month: 'long' });
+      delete data[currentMonth];
       const labels = Object.keys(data);
-      const datasets = Object.entries(data[labels[0]]).map(([etat, value], i) => {
+      const datasets = Object.entries(data[labels[1]]).filter(([etat, value]) => {
+        return etat === 'Traited' || etat === 'Refused' ;
+      }).map(([etat, value], i) => {
         const color = this.getRandomColor();
         const values = Object.values(data).map(monthlyCount => monthlyCount[etat] || 0);
         return {
@@ -28,7 +32,7 @@ export class ClaimStaticsComponent implements OnInit {
           borderColor: color + '1)',
           borderWidth: 1
         };
-      });
+      });      
       const canvas = document.getElementById('myChart') as HTMLCanvasElement;
       const ctx = canvas.getContext('2d');
       if (ctx) {
@@ -41,6 +45,30 @@ export class ClaimStaticsComponent implements OnInit {
         });
       }
     });
+    /////////////////////////////////////////////////////////////////////////
+    this.ps.countByEtatAndDateClaimIsAfter().subscribe((data: {[key: string]: any}) => {
+      const labels = Object.keys(data);
+      const datasets = [{
+        label: 'Number of Claims',
+        data: Object.values(data),
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: '#990100',
+        borderWidth: 1
+      }];
+      const canvas = document.getElementById('myChart2') as HTMLCanvasElement;
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        const myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: datasets
+          }
+        });
+      }
+    });
+    
+    
   }
   
   
@@ -55,6 +83,10 @@ export class ClaimStaticsComponent implements OnInit {
 
   updatefiles(){
 
+  }
+
+  export(){
+    this.ps.exportTraitedClaim().subscribe();
   }
 
   viewfiles(){

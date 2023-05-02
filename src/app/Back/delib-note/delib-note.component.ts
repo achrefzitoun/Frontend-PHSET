@@ -28,4 +28,7 @@ export class DelibNoteComponent implements OnInit {
     });
   }
 
+  delib(){
+    this.ps.assignScoreToInterview().subscribe();
+  }
 }

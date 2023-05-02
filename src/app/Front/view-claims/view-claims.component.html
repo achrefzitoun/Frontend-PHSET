@@ -148,7 +148,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-10 mx-auto" *ngFor="let claim of claims">
+            <div class="col-md-10 mx-auto" *ngFor="let claim of claims | paginate: { itemsPerPage: 2 , currentPage: p } , let i=index">
                 <div class="accordion" id="accordionRental">
                     <h3>
                         {{claim.object}}
@@ -198,6 +198,11 @@
                 <br>
             </div>
 
+        </div>
+    </div>
+    <div class="mt-8 py-5 d-flex justify-content-center align-items-center">
+        <div class="text-center">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
     </div>
 

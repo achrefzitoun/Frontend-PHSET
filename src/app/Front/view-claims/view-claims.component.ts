@@ -12,6 +12,13 @@ import { Router } from '@angular/router';
 })
 export class ViewClaimsComponent implements OnInit {
 
+
+  itemPerPage : number = 8 ;
+  p!:number;
+  ten : string ="";
+  totalClaim : any;
+  filteredClaims: any[] = [];
+
   claims!:Claim[];
   constructor(private ps : EvaluationService, private router: Router) { }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Route } from '@angular/router';
 import { MCQ } from 'src/app/Models/MCQ';
 import { EvaluationService } from 'src/app/Services/evaluation.service';
 
@@ -9,15 +10,17 @@ import { EvaluationService } from 'src/app/Services/evaluation.service';
 })
 export class PassMcqComponent implements OnInit {
 
-  constructor(private ps : EvaluationService) { }
+  constructor(private ps : EvaluationService, private route : ActivatedRoute) { }
 
   mcq!: MCQ;
   type = 'Language_Skills';
   answeredQuestions = 0;
   timeLeft: number = 599;
   i!: number;
+  id!:number;
   ngOnInit(): void {
-    this.ps.getMCQ(this.type).subscribe(mcq => {
+    this.id = +this.route.snapshot.queryParamMap.get('id')!;
+    this.ps.getMCQ(this.id).subscribe(mcq => {
       if(mcq.score==0){
         this.mcq = mcq;
         setInterval(() => {

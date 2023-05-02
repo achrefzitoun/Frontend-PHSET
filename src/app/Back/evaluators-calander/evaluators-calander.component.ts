@@ -19,32 +19,34 @@ export class EvaluatorsCalanderComponent implements OnInit {
   constructor(private ps : EvaluationService) { }
 
   ngOnInit(): void {
-    this.getALL();
-
-
     const calendarEl = document.getElementById('calendar');
     if (calendarEl) {
       this.calendar = new Calendar(calendarEl, {
         plugins: [dayGridPlugin, timeGridPlugin],
-        events: []
-      });
-      this.calendar.render();}
-  }
-    
-
-  getALL() {
-    this.ps.getCurrentJuryInterview().subscribe((res) => {
-      if (Array.isArray(res)) {  
-        this.int = res;
-        this.calendar.addEventSource(this.int.map(i => {  
-          return {
-            title: `Interview ${i.typeInterview}`,
-            start: i.dateInterview , end: i.finInterview
+        events: [],
+        eventClick: (info) => {
+          if (confirm(`${info.event.title}.. Do you want to cancel your participation in this event?`)) {
+            const eventId = info.event.id;
+            this.ps.desafecterProfInterview(eventId,null).subscribe(() => {
+              info.event.remove();
+              alert(`L'événement "${info.event.title}" a été supprimé.`);
+            });
           }
-        }));
-      }
-    });
-
+        }
+      });
+      this.ps.getCurrentJuryInterview().subscribe((res) => {
+        if (Array.isArray(res)) {
+          const events = res.map((i) => ({
+            title: `Interview ${i.typeInterview}`,
+            start: i.dateInterview,
+            end: i.finInterview,
+            id: i.idInterview.toString()
+          }));
+          this.calendar.addEventSource(events);
+        }
+      });
+      this.calendar.render();
+    }
   }
 }
 

@@ -143,7 +143,7 @@
             <div class="card-body position-relative p-3 ps-0">
               <div class="row mt-4">
                 <div class="mb-4">
-                  <h5 >Object</h5>
+                  <h5>Object</h5>
                   <select class="form-control" id="object" name="object" [(ngModel)]="claim.object">
                     <option value="Email">Email</option>
                     <option value="APP0 Video">APP0 Video</option>
@@ -155,25 +155,29 @@
                 </div>
               </div>
               <div class="form-group mb-4">
-                <h5 >Content</h5>
+                <h5>Content</h5>
                 <textarea name="content" class="form-control" [(ngModel)]="claim.content" rows="4"></textarea>
               </div>
               <div class="form-group mb-4">
-                <h5 >File</h5>
+                <h5>File</h5>
                 <input style="color: #990100;" type="file" class="form-control" rows="4" name="file"
                   (change)="onFileSelected($event)">
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-check form-switch mb-4">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" (change)="onCheckboxChange()" [(ngModel)]="isChecked">
-                    <label class="form-check-label" for="flexSwitchCheckDefault" style="color: #990100;">I agree to the <a href="javascript:;" style="color: #990100;"><u>Terms and Conditions</u></a>.</label>
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
+                      (change)="onCheckboxChange()" [(ngModel)]="isChecked">
+                    <label class="form-check-label" for="flexSwitchCheckDefault" style="color: #990100;">I agree to the
+                      <a href="javascript:;" style="color: #990100;"><u>Terms and Conditions</u></a>.</label>
                   </div>
-                  
+
                   <div class="col-md-12">
-                    <button type="button" class="btn bg-gradient-danger w-100" id="submitButton" [disabled]="!isChecked" (click)="onSubmit()"><i class="mdi mdi-check-circle" style="height: 100pt; width: 100pt;"></i> Add claim</button>
+                    <button type="button" class="btn bg-gradient-danger w-100" id="submitButton" [disabled]="!isChecked"
+                      (click)="onSubmit()"><i class="mdi mdi-check-circle" style="height: 100pt; width: 100pt;"></i> Add
+                      claim</button>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
@@ -185,8 +189,6 @@
 </div>
 
 
-
-
 <div class="position-relative mt-8">
   <div class="container">
     <div class="card bg-gradient-primary z-index-3">
@@ -195,7 +197,9 @@
           <div class="col-md-8 mx-auto text-center">
             <h3 class="text-white">Thank you for submitting your claim</h3>
             <p class="text-white opacity-8 mb-5 pe-5">
-              Our claims service team will process your request as soon as possible. Please note that processing times may vary depending on the complexity of your claim. We appreciate your patience and understanding. If you have any further questions or concerns, please don't hesitate to contact us.
+              Our claims service team will process your request as soon as possible. Please note that processing times
+              may vary depending on the complexity of your claim. We appreciate your patience and understanding. If you
+              have any further questions or concerns, please don't hesitate to contact us.
             </p>
           </div>
         </div>
@@ -206,15 +210,20 @@
 <footer class="footer pb-5 pt-10 bg-light mt-n8 position-relative">
 
   <div class="position-absolute w-100 z-inde-1 top-0 mt-n3">
-    <svg width="100%" viewBox="0 -2 1920 157" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <title>wave-down</title>
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g fill="#FFFFFF" fill-rule="nonzero">
-                <g id="wave-down">
-                    <path d="M0,60.8320331 C299.333333,115.127115 618.333333,111.165365 959,47.8320321 C1299.66667,-15.5013009 1620.66667,-15.2062179 1920,47.8320331 L1920,156.389409 L0,156.389409 L0,60.8320331 Z" id="Path-Copy-2" transform="translate(960.000000, 78.416017) rotate(180.000000) translate(-960.000000, -78.416017) "></path>
-                </g>
-            </g>
+    <svg width="100%" viewBox="0 -2 1920 157" version="1.1" xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+      <title>wave-down</title>
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g fill="#FFFFFF" fill-rule="nonzero">
+          <g id="wave-down">
+            <path
+              d="M0,60.8320331 C299.333333,115.127115 618.333333,111.165365 959,47.8320321 C1299.66667,-15.5013009 1620.66667,-15.2062179 1920,47.8320331 L1920,156.389409 L0,156.389409 L0,60.8320331 Z"
+              id="Path-Copy-2"
+              transform="translate(960.000000, 78.416017) rotate(180.000000) translate(-960.000000, -78.416017) ">
+            </path>
+          </g>
         </g>
+      </g>
     </svg>
   </div>
   <div class="container">
@@ -247,7 +256,8 @@
           </li>
         </ul>
         <p class="mb-0">
-          Copyright © <script>
+          Copyright ©
+          <script>
             document.write(new Date().getFullYear())
           </script> Soft by Creative Tim.
         </p>

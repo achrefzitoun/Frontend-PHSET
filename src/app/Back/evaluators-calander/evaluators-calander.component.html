@@ -1,113 +1,196 @@
 <style>
-    #calendar {
-  max-width: 800px;
-  margin: 0 auto;
-  font-family: Arial, sans-serif;
-}
+  #calendar {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
 
-.fc-header-toolbar {
-  margin-bottom: 10px;
-}
+  .fc-header-toolbar {
+    margin-bottom: 10px;
+  }
 
-.fc-header-title h2 {
-  font-size: 24px;
-}
+  .fc-header-title h2 {
+    font-size: 24px;
+  }
 
-.fc-prev-button,
-.fc-next-button,
-.fc-today-button {
-  background-color: #fff;
-  color: #3c3c3c;
-  border-color: #3c3c3c;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-right: 10px;
-}
+  .fc-prev-button,
+  .fc-next-button,
+  .fc-today-button {
+    background-color: #fff;
+    color: #3c3c3c;
+    border-color: #3c3c3c;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
 
-.fc-prev-button:hover,
-.fc-next-button:hover,
-.fc-today-button:hover {
-  background-color: #3c3c3c;
-  color: #fff;
-}
+  .fc-prev-button:hover,
+  .fc-next-button:hover,
+  .fc-today-button:hover {
+    background-color: #3c3c3c;
+    color: #fff;
+  }
 
-.fc-prev-button:active,
-.fc-next-button:active,
-.fc-today-button:active {
-  background-color: #3c3c3c;
-  color: #fff;
-  box-shadow: none;
-}
+  .fc-prev-button:active,
+  .fc-next-button:active,
+  .fc-today-button:active {
+    background-color: #3c3c3c;
+    color: #fff;
+    box-shadow: none;
+  }
 
-.fc-button-group {
-  display: inline-block;
-  margin-right: 10px;
-}
+  .fc-button-group {
+    display: inline-block;
+    margin-right: 10px;
+  }
 
-.fc-event {
-  background-color: #3c3c3c;
-  color: #fff;
-  border-radius: 4px;
-  padding: 5px;
-  cursor: pointer;
-}
+  .fc-event {
+    background-color: #3c3c3c;
+    color: #fff;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+  }
 
-.fc-event:hover {
-  background-color: #fff;
-  color: #3c3c3c;
-  border: 1px solid #3c3c3c;
-}
+  .fc-event:hover {
+    background-color: #fff;
+    color: #3c3c3c;
+    border: 1px solid #3c3c3c;
+  }
 
-.fc-day-number {
-  font-size: 18px;
-  font-weight: bold;
-}
+  .fc-day-number {
+    font-size: 18px;
+    font-weight: bold;
+  }
 
-.fc-day-header {
-  font-size: 18px;
-  font-weight: bold;
-  text-transform: uppercase;
-}
+  .fc-day-header {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
 
-.fc-day {
-  padding: 10px;
-}
+  .fc-day {
+    padding: 10px;
+  }
 
-.fc-time {
-  font-size: 14px;
-}
+  .fc-time {
+    font-size: 14px;
+  }
 
-.fc-axis {
-  font-size: 14px;
-  font-weight: bold;
-  color: #3c3c3c;
-}
+  .fc-axis {
+    font-size: 14px;
+    font-weight: bold;
+    color: #3c3c3c;
+  }
 
-.fc-toolbar.fc-header-toolbar {
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
-  box-shadow: 0 2px 2px rgba(0,0,0,0.1);
-}
+  .fc-toolbar.fc-header-toolbar {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  }
 
-.fc-state-default {
-  background-color: #fff;
-  color: #3c3c3c;
-  border-color: #ccc;
-  border-radius: 4px;
-  padding: 6px 12px;
-  cursor: pointer;
-}
+  .fc-state-default {
+    background-color: #fff;
+    color: #3c3c3c;
+    border-color: #ccc;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
 
-.fc-state-active,
-.fc-state-down {
-  background-color: #3c3c3c;
-  color: #fff;
-}
+  .fc-state-active,
+  .fc-state-down {
+    background-color: #3c3c3c;
+    color: #fff;
+  }
 
-.fc-state-hover {
-  background-color: #ccc;
-}
+  .fc-state-hover {
+    background-color: #ccc;
+  }
 </style>
 
-<div id="calendar"></div>
+
+<app-nav-bar-back></app-nav-bar-back>
+<div class="container-scroller">
+  <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+      <li class="nav-item nav-profile border-bottom">
+        <a href="#" class="nav-link flex-column">
+          <div class="nav-profile-image">
+            <img src="../../../assets/Back/images/faces/face1.jpg" alt="profile" />
+            <!--change to offline or busy as needed-->
+          </div>
+          <div class="nav-profile-text d-flex ml-0 mb-3 flex-column">
+            <span class="font-weight-semibold mb-1 mt-2 text-center">Antonio Olson</span>
+            <span class="text-secondary icon-sm text-center">$3499.00</span>
+          </div>
+        </a>
+      </li>
+
+      <li class="pt-2 pb-1">
+        <span class="nav-item-head">Menu</span>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/claimlist">
+          <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+          <span class="menu-title">Claim list</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/claimstatics">
+          <i class="mdi mdi-chart-bar menu-icon"></i>
+          <span class="menu-title">Claim statics</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/delib">
+          <i class="mdi mdi-email-outline menu-icon"></i>
+          <span class="menu-title">Deliberation notes</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/listevalint">
+          <i class="mdi mdi-format-line-weight menu-icon"></i>
+          <span class="menu-title">Interview list</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/evalcalander">
+          <i class="mdi mdi-calendar menu-icon"></i>
+          <span class="menu-title">Calender of Interviews</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/listquestions">
+          <i class="mdi mdi mdi-comment-question-outline menu-icon"></i>
+          <span class="menu-title">List of questions</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/viewevaluations">
+          <i class="mdi mdi mdi mdi-contrast-box menu-icon"></i>
+          <span class="menu-title">List of evaluations</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="text-center">
+                  <div id="calendar" style="width: 10000px; height: auto;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
